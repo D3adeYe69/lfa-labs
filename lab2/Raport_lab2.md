@@ -219,7 +219,7 @@ public class Program
 }
 
 ```
-![Console results](Images/Console2.png)
+![Console results](/Images/Console2.png)
 ---
 
 ## Conclusion  

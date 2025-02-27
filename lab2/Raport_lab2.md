@@ -34,6 +34,14 @@ A Type-3 grammar (regular grammar) follows strict rules where each production ru
 
 Examining the given grammar, the production rules mostly conform to right-linear form (`S → aD`, `D → bE`, etc.), which makes it a **Regular Grammar (Type-3)** according to the Chomsky hierarchy.  
 
+### Converting NDFA to DFA
+The ConvertNDFAtoDFA() function follows these steps:
+1. Initialize the DFA state set with the NDFA start state.
+2. Process each DFA state, checking its possible transitions.
+3. Create new DFA states for any set of NDFA states reached via a transition.
+4. Continue until all reachable states are processed.
+5. Ensure that final states include any state that contains the original NDFA final state.
+
 ### Finite Automaton Implementation  
 The `FiniteAutomaton` class consists of:  
 - **States**: `{q0, q1, q2, q3}`  

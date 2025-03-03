@@ -79,13 +79,9 @@ while (result.IndexOfAny(VN.ToArray()) != -1)
 }
 return result;
 ```
-Starts with the non-terminal *S* and iteratively replaces non-terminals with random productions from the grammar until only terminals remain. This process ensures the generated string adheres to the grammar rules and produces valid strings for the language. It demonstrates how the grammar can dynamically create strings based on its production rules.
+Starts with the non-terminal S and iteratively replaces non-terminals with random productions from the grammar until only terminals remain. This process ensures the generated string adheres to the grammar rules and produces valid strings for the language. It demonstrates how the grammar can dynamically create strings based on its production rules. By using randomness, it generates a variety of valid strings, showcasing the flexibility of the grammar. This method is essential for testing and validating the grammar's structure and rules.
 
 ```csharp
-var dfaTransitions = new Dictionary<(string, char), string>();
-var newStates = new Queue<HashSet<string>>();
-var initialState = new HashSet<string> { StartState };
-newStates.Enqueue(initialState);
 
 while (newStates.Count > 0)
 {
@@ -111,7 +107,7 @@ while (newStates.Count > 0)
 }
 return dfaTransitions;
 ```
-Converts a Non-Deterministic Finite Automaton (NDFA) to a Deterministic Finite Automaton (DFA) by creating new states that represent combinations of NDFA states and defining transitions between them. This process ensures the DFA behaves equivalently to the original NDFA, enabling deterministic processing of input strings. It is a key step in simplifying automata for analysis and implementation.
+Converts a Non-Deterministic Finite Automaton (NDFA) to a Deterministic Finite Automaton (DFA) by creating new states that represent combinations of NDFA states and defining transitions between them. This process ensures the DFA behaves equivalently to the original NDFA, enabling deterministic processing of input strings. It is a key step in simplifying automata for analysis and implementation. By systematically exploring all possible state combinations, it guarantees that the resulting DFA is both complete and accurate. This method is fundamental for automata theory and practical applications like lexical analysis in compilers.
 
 
 

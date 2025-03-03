@@ -59,8 +59,9 @@ The `FiniteAutomaton` class consists of:
 An automaton is **non-deterministic** (NDFA) if:  
 - A state has multiple possible transitions for the same input symbol.  
 - There exists at least one transition to multiple states.  
-  
+
 In this case, the transition δ(q2, b) = {q3, q2} means that on input `b`, the automaton can move to either `q3` or stay in `q2`. This confirms that the given automaton is **non-deterministic**.  
+
 ---
 ## Code implementation
 ```c#

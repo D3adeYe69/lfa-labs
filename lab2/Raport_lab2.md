@@ -79,7 +79,7 @@ while (result.IndexOfAny(VN.ToArray()) != -1)
 }
 return result;
 ```
-Starts with S and replaces non-terminals with random productions until only terminals remain, generating valid strings.
+Starts with the non-terminal *S* and iteratively replaces non-terminals with random productions from the grammar until only terminals remain. This process ensures the generated string adheres to the grammar rules and produces valid strings for the language. It demonstrates how the grammar can dynamically create strings based on its production rules.
 
 ```csharp
 var dfaTransitions = new Dictionary<(string, char), string>();
@@ -111,7 +111,7 @@ while (newStates.Count > 0)
 }
 return dfaTransitions;
 ```
-Converts a Non-Deterministic Finite Automaton (NDFA) to a Deterministic Finite Automaton (DFA) by creating new states that represent combinations of NDFA states and defining transitions between them.
+Converts a Non-Deterministic Finite Automaton (NDFA) to a Deterministic Finite Automaton (DFA) by creating new states that represent combinations of NDFA states and defining transitions between them. This process ensures the DFA behaves equivalently to the original NDFA, enabling deterministic processing of input strings. It is a key step in simplifying automata for analysis and implementation.
 
 
 

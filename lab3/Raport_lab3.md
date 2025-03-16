@@ -239,9 +239,6 @@ The GetNextToken method is the core of the lexer:
 ## Results
 ![Consola](/Images/token.png)
 ![Consola2](/Images/summary.png)
-
-# Conclusion  
-Our C# lexer implementation successfully converts source text into a stream of typed tokens—the lexical building blocks like identifiers, operators, and literals that form the foundation of language processing. The character-by-character scanning approach, combined with state tracking and lookahead capabilities, efficiently handles complex patterns such as multi-character operators and string escape sequences while maintaining precise line and column information. While this lexer doesn't tackle parsing or AST construction, it provides a clean API through the `Tokenize()` method that makes integration with downstream components straightforward. The code strikes a nice balance between readability and performance—using StringBuilder for token construction and employing nullable types for cleaner boundary handling—making it both a practical learning tool and a solid starting point for more ambitious language projects.
 ---  
 # Conclusion
 

@@ -28,13 +28,13 @@ Sometimes position information for error reporting
 - **TokenType Enum**: Defines categories like KEYWORD, IDENTIFIER, INTEGER, etc.
 - **Lexer Class**: Main component that processes source code into tokens
 
-## Key Methods
+### Key Methods
 - **Advance()**: Moves to next character and updates position tracking
 - **Peek()**: Looks ahead without advancing position
 - **GetNextToken()**: Main processing function that identifies next token
 - **Tokenize()**: Processes entire source code into a list of tokens
 
-## Token Recognition Process
+### Token Recognition Process
 - Whitespace characters are skipped
 - Comments (starting with //) are identified and skipped
 - Keywords are recognized by comparing to predefined set
@@ -44,26 +44,26 @@ Sometimes position information for error reporting
 - Operators include both single-character (+, -, *) and multi-character (==, !=, >=)
 - Delimiters include brackets, semicolons, commas, etc.
 
-## Special Features
+### Special Features
 - Line and column tracking for error reporting
 - Support for multi-character operators (==, !=, <=, >=)
 - Escape sequence handling in strings (\n, \t, etc.)
 - Comment skipping
 - Error reporting for invalid characters and unclosed strings
 
-## Processing Workflow
+### Processing Workflow
 1. Initialize with source code
 2. Process characters one at a time
 3. Identify patterns that form tokens
 4. Return tokens with their types and values
 5. Continue until end of source code is reached
 
-## Demo Program Features
+### Demo Program Features
 - Tokenizes a sample program with variable declarations, control structures, etc.
 - Displays all identified tokens with their types and positions
 - Provides statistics on token distribution by type
 
-## Limitations
+### Limitations
 - Only performs lexical analysis, not syntax validation
 - Doesn't build a parse tree or evaluate expressions
 - No semantic analysis (type checking, scope validation, etc.)
@@ -75,14 +75,14 @@ Sometimes position information for error reporting
 ```csharp
 public enum TokenType
 {
-    IDENTIFIER,   // Variable/function names
-    KEYWORD,      // Reserved words like 'if'
-    INTEGER,      // Whole numbers
-    FLOAT,        // Decimal numbers
-    STRING,       // Text in quotes
-    OPERATOR,     // +, -, *, /, =, etc.
-    DELIMITER,    // (, ), {, }, ;, etc.
-    EOF           // End of file marker
+    IDENTIFIER,   
+    KEYWORD,      
+    INTEGER,      
+    FLOAT,        
+    STRING,       
+    OPERATOR,     
+    DELIMITER,    
+    EOF          
 }
 
 ```
@@ -165,18 +165,17 @@ public Token GetNextToken()
 {
     while (_currentChar != null)
     {
-        // Skip whitespace
+        
         if (char.IsWhiteSpace(_currentChar.Value))
         {
             SkipWhitespace();
             continue;
         }
 
-        // Skip comments
         if (_currentChar == '/' && Peek() == '/')
         {
-            Advance();  // Skip first '/'
-            Advance();  // Skip second '/'
+            Advance();  
+            Advance();  
             SkipComment();
             continue;
         }
@@ -236,8 +235,8 @@ The GetNextToken method is the core of the lexer:
 - It reports errors for invalid characters
 - When the end of the source code is reached, it returns an EOF token
 
+---
 
-## Conclusion  
-# Conclusion
 
+# Conclusion  
 Our C# lexer implementation successfully converts source text into a stream of typed tokens—the lexical building blocks like identifiers, operators, and literals that form the foundation of language processing. The character-by-character scanning approach, combined with state tracking and lookahead capabilities, efficiently handles complex patterns such as multi-character operators and string escape sequences while maintaining precise line and column information. While this lexer doesn't tackle parsing or AST construction, it provides a clean API through the `Tokenize()` method that makes integration with downstream components straightforward. The code strikes a nice balance between readability and performance—using StringBuilder for token construction and employing nullable types for cleaner boundary handling—making it both a practical learning tool and a solid starting point for more ambitious language projects.

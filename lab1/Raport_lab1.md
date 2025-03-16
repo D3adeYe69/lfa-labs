@@ -59,7 +59,7 @@ while (result.IndexOfAny(VN.ToArray()) != -1)
 }
 return result;
 ```
-Starts with 'S' and replaces non-terminals with random productions until only terminals remain, generating valid strings
+Starts with S and replaces non-terminals with random productions until only terminals remain, generating valid strings. This ensures the generated string adheres to the grammar rules.
 ```csharp
 string currentState = "S";
 foreach (char symbol in input)
@@ -75,7 +75,7 @@ foreach (char symbol in input)
 }
 return currentState == "L";
 ```
-Simulates the automaton by transitioning states based on input symbols. Validates if the string follows the defined rules.
+Simulates the automaton by transitioning states based on input symbols. It ensures the string follows the defined rules, starting with 'a' and ending with 'c'. This method validates whether the input string belongs to the language recognized by the automaton.
 
 ```csharp
 if (fa.StringBelongsToLanguage(userInput))
@@ -87,7 +87,7 @@ else
     Console.WriteLine($"'{userInput}' is NOT a valid word.");
 }
 ```
-Checks user input against the automaton and prints whether the string is valid or not.
+Checks if the user's input string belongs to the language defined by the automaton using the *StringBelongsToLanguage* method. It prints a message indicating whether the string is valid or not, providing immediate feedback to the user. This interaction is key for testing and validating strings against the automaton's rules.
 
 ![Screenshot of the code](/Images/Console1.png)
  

@@ -23,51 +23,14 @@ Sometimes position information for error reporting
 ## Implementation Description  
 
 
-### Core Components
-- **Token Class**: Stores token type, value, and position (line, column)
-- **TokenType Enum**: Defines categories like KEYWORD, IDENTIFIER, INTEGER, etc.
-- **Lexer Class**: Main component that processes source code into tokens
+## Components and Methods
+The lexer is built on fundamental classes and methods. It includes a Token Class to store each token’s type, value, and position, along with a TokenType Enum that categorizes tokens (such as KEYWORD, IDENTIFIER, INTEGER, etc.). The Lexer Class processes the source code using key methods like Advance()—which moves to the next character and updates position tracking—and Peek(), which looks ahead without advancing. The GetNextToken() method identifies the next token based on context, while Tokenize() loops through the source code until all tokens are formed. Additional features include precise line and column tracking for error reporting, handling multi-character operators through lookahead, and processing escape sequences in strings.
 
-### Key Methods
-- **Advance()**: Moves to next character and updates position tracking
-- **Peek()**: Looks ahead without advancing position
-- **GetNextToken()**: Main processing function that identifies next token
-- **Tokenize()**: Processes entire source code into a list of tokens
+## Token Recognition and Workflow
+During tokenization, the lexer skips over whitespace and comments, distinguishes keywords from identifiers, and parses numbers as integers or floats. It also processes strings (handling escape sequences) and identifies both single-character and multi-character operators, as well as delimiters like brackets and semicolons. The overall workflow starts with initializing the lexer with the source code, then analyzing the input character by character to form tokens, each annotated with type, value, and positional data, until the end of the source is reached.
 
-### Token Recognition Process
-- Whitespace characters are skipped
-- Comments (starting with //) are identified and skipped
-- Keywords are recognized by comparing to predefined set
-- Identifiers are sequences of letters, digits, and underscores
-- Numbers are recognized as integers or floats depending on decimal point
-- Strings are recognized as characters between double quotes
-- Operators include both single-character (+, -, *) and multi-character (==, !=, >=)
-- Delimiters include brackets, semicolons, commas, etc.
-
-### Special Features
-- Line and column tracking for error reporting
-- Support for multi-character operators (==, !=, <=, >=)
-- Escape sequence handling in strings (\n, \t, etc.)
-- Comment skipping
-- Error reporting for invalid characters and unclosed strings
-
-### Processing Workflow
-1. Initialize with source code
-2. Process characters one at a time
-3. Identify patterns that form tokens
-4. Return tokens with their types and values
-5. Continue until end of source code is reached
-
-### Demo Program Features
-- Tokenizes a sample program with variable declarations, control structures, etc.
-- Displays all identified tokens with their types and positions
-- Provides statistics on token distribution by type
-
-### Limitations
-- Only performs lexical analysis, not syntax validation
-- Doesn't build a parse tree or evaluate expressions
-- No semantic analysis (type checking, scope validation, etc.)
-- No execution capabilities
+## Demo Program and Limitations
+A demo program might showcase this lexer by processing a sample program with variable declarations and control structures, displaying the tokens with their types and positions, and providing basic statistics on token distribution. However, the lexer is limited to lexical analysis only; it does not validate syntax, build a parse tree, perform semantic analysis like type checking or scope validation, nor does it execute code.
 
 ---
 
